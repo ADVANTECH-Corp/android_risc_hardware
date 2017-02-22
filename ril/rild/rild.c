@@ -184,7 +184,9 @@ int main(int argc, char **argv) {
     if (strncmp(clientId, "0", MAX_CLIENT_ID_LENGTH)) {
         RIL_setRilSocketName(strncat(rild, clientId, MAX_SOCKET_NAME_LENGTH));
     }
-    //Wait for device ready.
+//---- remote for telit 3G module ------
+#if 0 
+   //Wait for device ready.
     if (rilLibPath == NULL) {
 		while(UNKNOWN_MODEM == modem_type){
 		    modem_type = runtime_3g_port_type();
@@ -215,7 +217,8 @@ int main(int argc, char **argv) {
 		rilLibPath = REFERENCE_RIL_DEF_PATH;
 		break;
     }
-
+#endif
+ALOGD("cehck rilLibPath =[%s]", rilLibPath);
     if (rilLibPath == NULL) {
         if ( 0 == property_get(LIB_PATH_PROPERTY, libPath, NULL)) {
             // No lib sepcified on the command line, and nothing set in props.
@@ -333,7 +336,7 @@ int main(int argc, char **argv) {
     }
 OpenLib:
 #endif
-    switchUser();
+    //switchUser();   //remote for telit 3G module
 
     dlHandle = dlopen(rilLibPath, RTLD_NOW);
 
