@@ -317,7 +317,7 @@ int main(int argc, char **argv) {
     }
 OpenLib:
 #endif
-    //switchUser();
+    //switchUser(); //from android 6.0.1
 
     dlHandle = dlopen(rilLibPath, RTLD_NOW);
 
